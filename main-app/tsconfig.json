@@ -1,0 +1,21 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "include": [
+    "env.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "types/*.d.ts",
+    "vite.config.ts",
+    "build/**/*.ts"
+  ],
+  "exclude": ["node_modules", "dist", "**/*.js"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "ES2020",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "ignoreDeprecations": "5.0"
+  }
+}

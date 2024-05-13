@@ -1,0 +1,9 @@
+<template>
+  <div>
+    <micro-app
+      name="thirdApp"
+      iframe
+      url="https://appcm.kindoucloud.com/smart-school/seminar"
+    ></micro-app>
+  </div>
+</template>
