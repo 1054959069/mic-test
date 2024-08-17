@@ -1,19 +1,19 @@
 import { defineConfig, loadEnv } from "vite";
 import path from "path";
+import createVitePlugins from "./src/plugins";
 import { createHtmlPlugin } from "vite-plugin-html";
 import { enableCDN } from "./build/cdn";
-import vue from "@vitejs/plugin-vue";
 
 export default defineConfig(config => {
   // 环境变量
   const env = loadEnv(config.mode, __dirname);
   return {
-    base: "/",
+    base: env.VITE_PUBLIC_PATH || "/",
     plugins: [
-      vue(),
+      ...createVitePlugins(),
       // 注入模板数据
       createHtmlPlugin({
-        inject: { data: { ENABLE_ERUDA: "false" } }
+        inject: { data: { ENABLE_ERUDA: env.VITE_ENABLE_ERUDA || "false" } }
       }),
       // 生产环境默认不启用 CDN 加速
       enableCDN(env.VITE_CDN_DEPS)
@@ -25,7 +25,7 @@ export default defineConfig(config => {
       // 是否开启 https
       https: false,
       cors: true,
-      // origin: "http://localhost:3002",
+      // origin: "http://localhost:3003",
       proxy: {
         [env.VITE_BASE_API]: {
           //获取数据的服务器地址设置
@@ -34,6 +34,25 @@ export default defineConfig(config => {
           changeOrigin: true,
           //路径重写
           rewrite: path => path.replace(/^\/api/, "")
+        }
+      }
+    },
+    css: {
+      preprocessorOptions: {
+        less: {
+          //全局样式变量引入(结尾;不能少)
+          javascriptEnabled: true,
+          additionalData: '@import "@/styles/variables.less";'
+        }
+      }
+    },
+    build: {
+      outDir: "third-app-h5",
+      rollupOptions: {
+        output: {
+          chunkFileNames: "static/js/[name]-[hash].js",
+          entryFileNames: "static/js/[name]-[hash].js",
+          assetFileNames: "static/[ext]/[name]-[hash].[ext]"
         }
       }
     }

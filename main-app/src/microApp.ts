@@ -16,15 +16,4 @@ microApp.start({
     }
   }
 });
-// 预加载vite子应用
-microApp.preFetch([
-  {
-    name: "thirdApp",
-    url: "https://appcm.kindoucloud.com",
-    iframe: true,
-    inline: true,
-    "disable-patch-request": false,
-    level: 3
-  }
-]);
 microApp.router.setBaseAppRouter(router);

@@ -3,7 +3,7 @@
     <micro-app
       name="thirdApp"
       iframe
-      url="https://appcm.kindoucloud.com/smart-school/seminar"
+      url="http://localhost:3003/smart-school/class-list"
     ></micro-app>
   </div>
 </template>

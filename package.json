@@ -1,5 +1,42 @@
 {
-	"dependencies": {
-		"vconsole": "^3.15.1"
-	}
+  "name": "common-api",
+  "version": "1.1.5",
+  "description": "api",
+  "scripts": {
+    "build": "unbuild && node add-export.js",
+    "dev:main": "cd ./main-app && npm run dev",
+    "dev:third": "cd ./thrid-app && npm run dev",
+    "dev": "npm-run-all --parallel dev:*",
+    "install:main": "cd ./main-app && pnpm i",
+    "install:third": "cd ./thrid-app && pnpm i",
+    "dev:install": "npm-run-all --parallel install:*"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/lib/index.d.ts",
+      "import": "./dist/lib/index.mjs",
+      "require": "./dist/lib/index.cjs"
+    }
+  },
+  "main": "./dist/lib/index.cjs",
+  "types": "./dist/lib/index.d.ts",
+  "files": [
+    "dist/lib"
+  ],
+  "dependencies": {
+    "axios": "^1.5.1",
+    "ts-md5": "^1.3.1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "fs-extra": "^11.2.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.4.3",
+    "unbuild": "^2.0.0"
+  },
+  "peerDependencies": {
+    "axios": "^1.5.1"
+  }
 }

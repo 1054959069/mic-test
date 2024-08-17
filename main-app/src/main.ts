@@ -5,8 +5,8 @@ import router from "./router";
 import "./permission";
 import "./microApp";
 
-import vConsole from "vconsole";
-new vConsole();
+/* import vConsole from "vconsole";
+new vConsole(); */
 
 const app = createApp(App);
 app.use(router);

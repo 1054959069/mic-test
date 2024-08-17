@@ -15,18 +15,18 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:host": "vite --mode host",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
-    "build-only": "vite build",
+    "build-only": "vite build --mode production",
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "release": "standard-version",
-    "prepare": "husky install"
+    "release": "standard-version"
   },
   "dependencies": {
-    "@micro-zoe/micro-app": "^1.0.0-rc.4",
     "@vueuse/core": "^10.7.1",
     "axios": "^1.5.1",
+    "common-api": "link:../",
     "dayjs": "^1.11.10",
     "echarts": "^5.5.0",
     "normalize.css": "^8.0.1",
@@ -35,10 +35,10 @@
     "pinia-plugin-persistedstate": "^3.2.1",
     "ts-md5": "^1.3.1",
     "vant": "^4.8.5",
+    "vconsole": "^3.15.1",
     "vue": "^3.3.6",
     "vue-router": "^4.2.5",
-    "vxe-table": "^4.5.20",
-    "xe-utils": "^3.5.22"
+    "@micro-zoe/micro-app": "1.0.0-rc.6"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.8.1",
